@@ -9,16 +9,22 @@ class PostsShow extends Component {
 	}
 
 	render() {
+		const post = this.props.postTESTINGVariable;
+
+		if (!post) return <div>Loading...</div>;
+
 		return (
 			<div>
-				Post Show Component
+				<h3>{ post.title }</h3>
+				<h6>Categories: { post.categories }</h6>
+				<p>{ post.content }</p>
 			</div>
 		);
 	}
 };
 
 function mapStateToProps({ posts }, ownProps) {
-	return { post: posts[ownProps.match.params.postId] };
+	return { postTESTINGVariable: posts[ownProps.match.params.postId] };
 };
 
 export default connect(mapStateToProps, { fetchPostById })(PostsShow);
